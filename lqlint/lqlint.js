@@ -105,7 +105,7 @@ Array.prototype.peek = function() {
 function lqlint(indent, input) {
 	//console.log("input2: " + input);
 	// join all lines
-	input = input.split("\n").join("");
+	input = input.split(/\n+/).join(" ");
 	// split command by command (considering subquery)
 	var commands = []
 	var cmd = "";
