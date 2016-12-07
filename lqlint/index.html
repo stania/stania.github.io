@@ -1,9 +1,25 @@
 <html>
-<head>
-	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script src="lqlint.js"></script>
-</head>
-<body>
-	<h1>hello, world</h1>
-</body>
+	<head>
+		<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="lqlint.js"></script>
+		<style>
+textarea {
+	width: 97%;
+	height: 15em;
+}
+div#linted textarea {
+	background-color: #eee;
+}
+		</style>
+	</head>
+	<body>
+		<div id="input">
+			<h3>input</h3>
+			<textarea id="input_ta"></textarea>
+		</div>
+		<div id="linted">
+			<h3>linted</h3>
+			<textarea id="linted_ta" readonly="true"></textarea>
+		</div>
+	</body>
 </html>
