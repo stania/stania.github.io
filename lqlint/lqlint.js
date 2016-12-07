@@ -73,10 +73,10 @@ function lintCommandWithSubQuery(indent, command) {
 		if (sq != null) sq += ch; else ext += ch;
 		prev = ch;
 	}
-	console.log(command);
-	console.log(ext);
-	console.log(sqpositions);
-	console.log(sqlist);
+	//console.log(command);
+	//console.log(ext);
+	//console.log(sqpositions);
+	//console.log(sqlist);
 	var result = "";
 	var prepos = 0;
 	for (var i = 0; i < sqpositions.length; ++i) {
@@ -95,7 +95,7 @@ function lintCommandWithSubQuery(indent, command) {
 }
 
 function lqlint(indent, input) {
-	console.log("input2: " + input);
+	//console.log("input2: " + input);
 	// join all lines
 	input = input.split("\n").join("");
 	// split command by command (considering subquery)
