@@ -11,9 +11,16 @@ $(document).ready(function() {
 	$("#input_ta").on("change keyup paste", function() {
 		var input = $("#input_ta").val();
 		$("#linted_ta").val(lqlint(0, input));
+		$("#linted_ta").trigger("input");
 	});
 	$("#input_ta").val(sample);
 	$("#input_ta").trigger("change");
+	$('#linted_ta').each(function () {
+		this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+	}).on('input', function () {
+		this.style.height = 'auto';
+		this.style.height = (this.scrollHeight) + 'px';
+	});
 });
 		</script>
 		<style>
