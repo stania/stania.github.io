@@ -60,6 +60,7 @@ function lintCommandWithSubQuery(indent, command) {
 			if (sq != null) sq += ch; else ext += ch;
 			_depth += 1;
 		} else if (ch == '\"' && _quote == '\"') { // quote end
+			if (sq != null) sq += ch; else ext += ch;
 			_quote = null;
 		} else if (ch == ']' && _quote == null && _sqparen != null) { // possibly subquery paren end
 			_depth -= 1;
@@ -148,16 +149,16 @@ function lqlint(indent, input) {
 	
 	// state validation
 	if (_quote != null)
-		throw "illegal input: _quote not matched("+quote+")"
+		throw "illegal input: _quote not matched("+_quote+")";
 	if (_sqparen != null)
-		throw "illegal input: _sqparen not matched("+_sqparen+")"
+		throw "illegal input: _sqparen not matched("+_sqparen+")";
 
 	// left trim && lint commands recursively
 	var indentStr = makeIndentStr(indent);
 	for (var i = 0; i < commands.length; ++i) {
 		commands[i] = commands[i].replace(/^\s+/, "");
 		if (hasSubQuery(commands[i])) {
-			commands[i] = lintCommandWithSubQuery(indent, commands[i])
+			commands[i] = lintCommandWithSubQuery(indent, commands[i]);
 		}
 	}
 	// add newline at startings of subquery
